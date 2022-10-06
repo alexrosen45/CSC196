@@ -29,8 +29,8 @@ if __name__ == '__main__':
     ]
 
     # check if 17 divided by each permutation yields any integer power of 2
-    target = 15
-    exponent_max_value = 15 # 1111 from binary to decimal
+    target = 17
+    exponent_max_value = 8 # 15 (1111 from binary to decimal) minus 2^(4-1)-1=7
     exponent_value = check_exponent_value(
         exponent_max_value,
         target,
@@ -40,4 +40,8 @@ if __name__ == '__main__':
     if exponent_value == False:
         print("no solutions")
     else:
-        print("Yes, using the exponent value 2^"+str(exponent_value[0])+" and the significand value "+str(exponent_value[1]))
+        if exponent_value[1] in range(exponent_max_value):
+            print("Yes, using the exponent value 2^"+str(exponent_value[0])
+            +" and the significand value "+str(exponent_value[1]))
+        else:
+            print("no solutions: requires more exponent bits")
